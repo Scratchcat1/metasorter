@@ -1,0 +1,2 @@
+resources/metasorter.json etc/metasorter
+resources/metasorter.service lib/systemd/system

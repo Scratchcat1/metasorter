@@ -1,0 +1,13 @@
+{
+    "_template": "https://github.com/Springerle/dh-virtualenv-mold.git",
+    "distro": "UNRELEASED",
+    "email": "root_pfad@protonmail.com",
+    "full_name": "Connor Holloway",
+    "package": "metasorter",
+    "repo_name": "debian",
+    "short_description": "Tool to automatically rename and organise photos and videos by date taken",
+    "snake": "/usr/bin/python3",
+    "url": " ",
+    "version": "0.1",
+    "year": "2021"
+}

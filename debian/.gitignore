@@ -1,0 +1,6 @@
+metasorter.*.debhelper
+metasorter.substvars
+metasorter/
+metasorter-*/
+files
+debhelper-build-stamp

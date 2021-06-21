@@ -1,0 +1,16 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/ambv/black
+    rev: stable
+    hooks:
+    - id: black
+-   repo: https://gitlab.com/PyCQA/flake8
+    rev: 3.8.3
+    hooks:
+    -   id: flake8
+        args: [
+            --config=.flake8,
+            # black will insert a space before : but
+            # flake8 raises this as an error, so ignore 
+            ]

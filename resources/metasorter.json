@@ -1,0 +1,36 @@
+{
+    "logging_level": "DEBUG",
+    "logfile": "testing/metasorter.log",
+    "media_types": {
+        "photo": [
+            "jpg",
+            "jpeg",
+            "JPG",
+            "JPEG",
+            "png",
+            "PNG",
+            "HEIC",
+            "heic"
+        ],
+        "video": [
+            "mp4",
+            "MP4",
+            "mov",
+            "MOV"
+        ]
+    },
+    "folders": [
+        {
+            "source": "testing/input",
+            "destination": "testing/output",
+            "max_transfer_time": 1,
+            "patterns": {
+                "include": [
+                    ".*"
+                ],
+                "exclude": []
+            },
+            "remove": true
+        }
+    ]
+}
