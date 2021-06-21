@@ -1,5 +1,5 @@
-# Photo Reorganiser
-Photo Reorganiser is a tool to automatically rename and organise photos and videos by date.
+# MetaSorter
+MetaSorter is a tool to automatically rename and organise photos and videos by date.
 
 ## Features
 - Rename and sort photos and videos based on date taken.
