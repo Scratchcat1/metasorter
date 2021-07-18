@@ -6,22 +6,40 @@ MetaSorter is a tool to automatically rename and organise photos and videos by d
 - Deduplicate identical media.
 - Watch folders to automatically sort incoming media.
 - Include/exclude files with regular expressions.
+- Poll until filesize remains constant to handle slow file transfers.
+- HEIF support.
 
 ## Installation
-Install dependencies with pip
+### Source
+Install dependencies with pip and run (you may want to set up a virtual environment)
 ```
 $ python3 -m pip install --upgrade pip
 $ pip install -r requirements.txt
+$ pip install -e .
+$ python3 -m metasorter.main --help
+metasorter.py -c <configfile> --config <configfile>
 ```
 
-## Configuration
+### Docker
 ```
+$ sudo docker run metasorter:latest \
+    -v /path/to/config:/app/config.json
+    -v /media/path/one:/media/path/one
+    -v /media/path/two:/media/path/two
+    -v /other/media/path/etc:/other/media/path/defined/in/config/file
+```
+
+## Tests
+Run tests with `$ python -m unittest discover`.
+
+## Configuration
+```jsonc
 // metasorter.json
 {
     // Message level to log. One of ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
     "logging_level": "INFO",
 
-    // Filepath to logfile
+    // (Optional) Filepath to logfile
     "logfile": "testing/metasorter.log",
 
 

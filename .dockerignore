@@ -1,0 +1,10 @@
+**/__pycache__
+.idea
+.vscode
+dist
+metasorter.egg-info
+
+testing
+venv
+*.deb
+debian

@@ -210,9 +210,10 @@ def resolve_collision(src_path, dest_folder, date_string, ext):
 def setup_loggers(config):
     logFormatter = logging.Formatter("%(asctime)s:%(levelname)s:%(message)s")
 
-    fileHandler = logging.FileHandler(config["logfile"])
-    fileHandler.setFormatter(logFormatter)
-    logger.addHandler(fileHandler)
+    if config["logfile"]:
+        fileHandler = logging.FileHandler(config["logfile"])
+        fileHandler.setFormatter(logFormatter)
+        logger.addHandler(fileHandler)
 
     consoleHandler = logging.StreamHandler()
     consoleHandler.setFormatter(logFormatter)
