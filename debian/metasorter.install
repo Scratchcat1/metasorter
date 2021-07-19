@@ -1,2 +1,3 @@
-resources/metasorter.json etc/metasorter
-resources/metasorter.service lib/systemd/system
+resources/debian/metasorter.json etc/metasorter
+resources/debian/metasorter.service lib/systemd/system
+resources/debian/metasorter.log var/log/metasorter

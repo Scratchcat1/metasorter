@@ -8,6 +8,6 @@
     "short_description": "Tool to automatically rename and organise photos and videos by date taken",
     "snake": "/usr/bin/python3",
     "url": " ",
-    "version": "0.1",
+    "version": "0.1.1",
     "year": "2021"
 }

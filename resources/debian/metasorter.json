@@ -1,0 +1,23 @@
+{
+    "logging_level": "DEBUG",
+    "logfile": "/var/log/metasorter/metasorter.log",
+    "media_types": {
+        "photo": [
+            "jpg",
+            "jpeg",
+            "JPG",
+            "JPEG",
+            "png",
+            "PNG",
+            "HEIC",
+            "heic"
+        ],
+        "video": [
+            "mp4",
+            "MP4",
+            "mov",
+            "MOV"
+        ]
+    },
+    "folders": []
+}

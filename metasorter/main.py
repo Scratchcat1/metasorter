@@ -254,7 +254,7 @@ def main():
             observer.start()
             logger.debug("Starting file watcher for folder %s", folder["source"])
             observers.append(observer)
-        logger.debug("Started file watchers")
+        logger.info(f"Started file watchers for {len(config['folders'])} folders")
 
         # sleep until keyboard interrupt, then stop + rejoin the observer
         try:

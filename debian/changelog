@@ -1,3 +1,9 @@
+metasorter (0.1.1) UNRELEASED; urgency=low
+
+  * metasorter: Improve debian packaging
+
+ -- Connor Holloway <root_pfad@protonmail.com>  Sun, 18 Jun 2021 17:37:00 +0000
+
 metasorter (0.1) UNRELEASED; urgency=low
 
   * metasorter: Initial debian packaging
