@@ -16,6 +16,7 @@ import json
 import getopt
 import sys
 from metasorter.date_lock_manager import DateLockManager
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 date_lock_manager = DateLockManager()
@@ -118,21 +119,19 @@ def on_created_file_handler(event, pattern_checker, config, folder_details):
 
             # Prevent a race condition occurring when two files resolve collisions at the same time
             with date_lock_manager.get_date_lock(date_string):
-                new_filename = (
-                    date_string
-                    + "_"
-                    + resolve_collision(event.src_path, dest_folder, date_string, ext)
-                    + "."
-                    + ext
+                collision_suffix = resolve_collision(
+                    event.src_path, dest_folder, date_string, ext
                 )
+                if collision_suffix:
+                    new_filename = date_string + "_" + collision_suffix + "." + ext
 
-                dest_filepath = os.path.join(dest_folder, new_filename)
-                shutil.copyfile(event.src_path, dest_filepath)
-                logger.info("Copied file %s to %s", event.src_path, dest_filepath)
-                os.chmod(
-                    dest_filepath,
-                    stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP,
-                )
+                    dest_filepath = os.path.join(dest_folder, new_filename)
+                    shutil.copyfile(event.src_path, dest_filepath)
+                    logger.info("Copied file %s to %s", event.src_path, dest_filepath)
+                    os.chmod(
+                        dest_filepath,
+                        stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP,
+                    )
 
                 if folder_details["remove"]:
                     os.remove(event.src_path)
@@ -186,7 +185,12 @@ def hash_file(filepath):
     return hasher.hexdigest()
 
 
-def resolve_collision(src_path, dest_folder, date_string, ext):
+def resolve_collision(src_path, dest_folder, date_string, ext) -> Optional[int]:
+    """
+    Return the suffix number to append to avoid collisions between different files taken at the
+    same time in the destination folder.
+    Returns None if the source hash matches the destination hash and no copy needs to take place.
+    """
     max_counter = -1
     filename_pattern = date_string + "_" + r"(\d+)" + "." + ext
     src_hash = hash_file(src_path)
@@ -201,7 +205,7 @@ def resolve_collision(src_path, dest_folder, date_string, ext):
                         src_path,
                         file,
                     )
-                    return match.group(1)
+                    return None
                 else:
                     max_counter = max(int(match.group(1)), max_counter)
     return str(max_counter + 1)

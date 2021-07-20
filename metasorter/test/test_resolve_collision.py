@@ -41,7 +41,7 @@ class TestResolveCollision(unittest.TestCase):
                 self.target_dir, filename=f"{name}_0.{ext}", data="data"
             ):
                 self.assertEqual(
-                    resolve_collision(filepath, self.target_dir, name, ext), "0"
+                    resolve_collision(filepath, self.target_dir, name, ext), None
                 )
 
     def test_different_content(self):
