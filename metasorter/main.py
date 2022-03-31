@@ -214,7 +214,7 @@ def resolve_collision(src_path, dest_folder, date_string, ext) -> Optional[int]:
 def setup_loggers(config):
     logFormatter = logging.Formatter("%(asctime)s:%(levelname)s:%(message)s")
 
-    if config["logfile"]:
+    if "logfile" in config and config["logfile"]:
         fileHandler = logging.FileHandler(config["logfile"])
         fileHandler.setFormatter(logFormatter)
         logger.addHandler(fileHandler)
