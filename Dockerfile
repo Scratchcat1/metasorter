@@ -17,5 +17,8 @@ FROM base
 COPY --from=builder /install /usr/local
 COPY ./ /app
 RUN pip install -e /app
+RUN apt-get -y clean && apt-get -y update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install ffmpeg --no-install-recommends && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 CMD ["python3", "-m", "metasorter.main", "-c", "/app/config.json"]
