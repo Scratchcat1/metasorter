@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="metasorter",
-    version="0.2.0",
+    version="0.2.1",
     author="Connor Holloway",
     author_email="root_pfad@protonmail.com",
     description="Tool to automatically rename and organise photos and videos by date taken",

@@ -90,7 +90,7 @@ def on_created_file_handler(event, pattern_checker, config, folder_details):
         # Wait for the transfer to complete
         logger.debug("Accepted event for file %s", event.src_path)
         time.sleep(folder_details["max_transfer_time"])
-        wait_until_constant_file_size(event.src_path, 5)
+        wait_until_constant_file_size(event.src_path, folder_details["max_transfer_time"])
 
         if os.path.getsize(event.src_path) == 0:
             raise Exception("Empty file")
